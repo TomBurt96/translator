@@ -256,7 +256,6 @@ class Parser
 			@s.matchChar(';')
 			@tempO.push(");\n")
 		elsif(@s.peekChar == ",")
-			freshNode.setChildren(3)
 			@s.matchChar(",")
 			temp = expression
 			@s.matchChar(")")
@@ -692,21 +691,9 @@ class Parser
 		@symTable.update(@backupTable)
 	end
 
-	def goto_inst()
-		freshNode = TreeNode.new()
-	end
-
 	def assignment(nam)
 		temp = "  " + nam + " = "
 		return temp
-	end
-
-	def termNode(name)
-		return TreeNode.new(nil, name)
-	end
-
-	def ref(name)
-		freshNode = TreeNode.new("ref", name)
 	end
 
 	def getLocal
